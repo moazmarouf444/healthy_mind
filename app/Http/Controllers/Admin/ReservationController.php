@@ -37,7 +37,7 @@ class ReservationController extends Controller
             $html = view('admin.reservations.table' ,compact('reservations'))->render() ;
             return response()->json(['html' => $html]);
         }
-        return view('admin.reservations.index');
+        return view('admin.reservations.finished_index');
 
     }
     public function reservationRefused(){
@@ -46,7 +46,7 @@ class ReservationController extends Controller
             $html = view('admin.reservations.table' ,compact('reservations'))->render() ;
             return response()->json(['html' => $html]);
         }
-        return view('admin.reservations.index');
+        return view('admin.reservations.refused_index');
 
     }
 

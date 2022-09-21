@@ -36,5 +36,5 @@
     <script src="{{asset('admin/app-assets/js/scripts/extensions/sweet-alerts.js')}}"></script>
     @include('admin.shared.deleteAll')
     @include('admin.shared.deleteOne')
-    @include('admin.shared.filter_js' , [ 'index_route' => url('admin/reservations.inprogress')])
+    @include('admin.shared.filter_js' , [ 'index_route' => url('admin/reservations.refused')])
 @endsection

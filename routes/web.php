@@ -1337,30 +1337,30 @@ Route::group([
         ]);
 
         # reservations inprogress
-//        Route::get('reservations.inprogress', [
-//            'uses'  => 'ReservationController@reservationInprogress',
-//            'as'    => 'reservations.inprogress',
-//            'icon'      => '<i class="feather icon-image"></i>',
-//            'type'      => 'parent',
-//            'title' => 'الحجوزات الجاريه'
-//        ]);
+        Route::get('reservations.inprogress', [
+            'uses'  => 'ReservationController@reservationInprogress',
+            'as'    => 'reservations.inprogress',
+            'icon'      => '<i class="feather icon-image"></i>',
+            'type'      => 'parent',
+            'title' => 'الحجوزات الجاريه'
+        ]);
 //
-//      # reservations finished
-//      Route::get('reservations.finished', [
-//          'uses'  => 'ReservationController@reservationFinished',
-//          'as'    => 'reservations.finished',
-//          'icon'      => '<i class="feather icon-image"></i>',
-//          'type'      => 'parent',
-//          'title' => 'الحجوزات المكتمله'
-//      ]);
-//      # reservations refused
-//      Route::get('reservations.refused', [
-//          'uses'  => 'ReservationController@reservationRefused',
-//          'as'    => 'reservations.refused',
-//          'icon'      => '<i class="feather icon-image"></i>',
-//          'type'      => 'parent',
-//          'title' => 'الحجوزات الملغيه'
-//      ]);
+      # reservations finished
+      Route::get('reservations.finished', [
+          'uses'  => 'ReservationController@reservationFinished',
+          'as'    => 'reservations.finished',
+          'icon'      => '<i class="feather icon-image"></i>',
+          'type'      => 'parent',
+          'title' => 'الحجوزات المكتمله'
+      ]);
+      # reservations refused
+      Route::get('reservations.refused', [
+          'uses'  => 'ReservationController@reservationRefused',
+          'as'    => 'reservations.refused',
+          'icon'      => '<i class="feather icon-image"></i>',
+          'type'      => 'parent',
+          'title' => 'الحجوزات الملغيه'
+      ]);
 
       /*------------ end Of reservations ----------*/
 //
