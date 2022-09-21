@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\coupons;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Store extends FormRequest
+class store extends FormRequest
 {
     public function authorize()
     {
@@ -14,10 +14,18 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'                  => 'required|max:191',
-            'phone'                 => 'required|numeric|unique:users,phone',
-            'email'                 => 'required|email|max:191|unique:users,email',
-            'password'              => ['required','max:191'],
+            'coupon_num'              => 'required|unique:coupons,coupon_num',
+            'max_use'                 => 'required|numeric',
+            'discount'              => 'required|numeric',
+            'expire_date'           => 'required|after:'.\Carbon\Carbon::now(),
+            'type'                  => 'required|in:ratio,number',
+        ] ;
+    }
+
+    public function messages()
+    {
+        return[
+            'coupon_num.unique' => awtTrans('رقم الكوبون مستخدم مسبقا'),
         ];
     }
 }

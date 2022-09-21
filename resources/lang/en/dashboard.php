@@ -42,9 +42,11 @@ return [
     'finished'  => 'finished',
     'inprogress'  => 'inprogress',
     'successfully_reservation'  => 'successfully_reservation',
-    'coupon_not_available'  => 'coupon not available',
     'coupon_has_expired'  => 'coupon_has_expired',
     'coupon_has_reached_the_maximum_usage_limit'  => 'Coupon has reached the maximum usage limit',
+    'reservation_successfully'  => 'Reservation successfully  ',
+    'coupon_not_available'  => 'Coupon not available  ',
+
 
 
 ];

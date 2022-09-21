@@ -56,6 +56,7 @@ return [
     'coupon_not_available'  => 'الكوبون غير موجود',
     'coupon_has_expired'  => 'الكوبون غير موجود',
     'coupon_has_reached_the_maximum_usage_limit'  => 'تم وصول الكوبون للحد الاقصي من الاستخدام ',
+    'reservation_successfully'  => 'تم  الحجز بنجاح  ',
 
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',

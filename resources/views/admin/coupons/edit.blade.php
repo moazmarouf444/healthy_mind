@@ -63,15 +63,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="first-name-column">{{awtTrans('اكبر قيمة للخصم')}}</label>
-                                            <div class="controls">
-                                                <input readonly type="number" name="max_discount" value="{{$coupon->max_discount}}" class="max_discount form-control" placeholder="{{awtTrans('اكتب اكبر قيمة للخصم')}}" required data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
+{{--                                    <div class="col-md-6 col-12">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="first-name-column">{{awtTrans('اكبر قيمة للخصم')}}</label>--}}
+{{--                                            <div class="controls">--}}
+{{--                                                <input readonly type="number" name="max_discount" value="{{$coupon->max_discount}}" class="max_discount form-control" placeholder="{{awtTrans('اكتب اكبر قيمة للخصم')}}" required data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}" >--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="first-name-column">{{awtTrans('تاريخ الانتهاء')}}</label>
                                             <div class="controls">

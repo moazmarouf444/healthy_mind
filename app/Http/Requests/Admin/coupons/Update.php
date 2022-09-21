@@ -6,20 +6,36 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class Update extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
-            'name'                  => 'required|max:191',
-            'phone'                 => 'required|numeric|unique:users,phone,'.$this->id,
-            'email'                 => 'required|email|max:191|unique:users,email,'.$this->id,
-            'type'                  => 'required_if:type,good',
-            'password'              => ['nullable','max:191'],
-            'avatar'                => ['nullable','image'],
+            'coupon_num'              => 'required|unique:coupons,coupon_num,'.$this->id,
+            'max_use'                 => 'required|numeric',
+            'discount'              => 'required|numeric',
+            'expire_date'           => 'required|after:'.\Carbon\Carbon::now(),
+            'type'                  => 'required|in:ratio,number',
+        ];
+    }
+
+    public function messages()
+    {
+        return[
+            'coupon_num.unique' => awtTrans('رقم الكوبون مستخدم مسبقا'),
         ];
     }
 }

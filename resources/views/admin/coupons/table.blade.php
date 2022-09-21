@@ -19,7 +19,7 @@
                 <th>{{awtTrans('نوع الخصم')}}</th>
                 <th>{{awtTrans('قيمة الخصم')}}</th>
                 <th>{{awtTrans('تاريخ الانتهاء')}}</th>
-                <th>{{awtTrans('تنشيط او الغاء تنشيط كوبون')}}</th>
+{{--                <th>{{awtTrans('تنشيط او الغاء تنشيط كوبون')}}</th>--}}
                 <th>{{awtTrans('التحكم')}}</th>
             </tr>
         </thead>
@@ -37,17 +37,17 @@
                     <td>{{$coupon->type == 'ratio' ? 'نسبة' :  'رقم ثابت'}}</td>
                     <td>{{$coupon->discount}}</td>
                     <td>{{date('d-m-Y', strtotime($coupon->expire_date))}}</td>
-                    <td>
-                        @if($coupon->status == 'available')
-                            <span class="btn btn-sm round btn-outline-danger change-coupon-status" data-date="{{$coupon->expire_date}}" data-status="closed" data-id="{{$coupon->id}}">
-                                {{awtTrans('ايقاف الكوبون')}}  <i class="feather icon-slash"></i>
-                            </span>
-                        @else
-                            <span class="btn btn-sm round btn-outline-success open-coupon" data-toggle="modal" id="div_{{$coupon->id}}" data-target="#notify" data-id="{{$coupon->id}}">
-                                {{awtTrans('اعاده تنشيط الكوبون')}}  <i class="feather icon-rotate-cw"></i>
-                            </span>
-                        @endif
-                    </td>
+{{--                    <td>--}}
+{{--                        @if($coupon->status == 'available')--}}
+{{--                            <span class="btn btn-sm round btn-outline-danger change-coupon-status" data-date="{{$coupon->expire_date}}" data-status="closed" data-id="{{$coupon->id}}">--}}
+{{--                                {{awtTrans('ايقاف الكوبون')}}  <i class="feather icon-slash"></i>--}}
+{{--                            </span>--}}
+{{--                        @else--}}
+{{--                            <span class="btn btn-sm round btn-outline-success open-coupon" data-toggle="modal" id="div_{{$coupon->id}}" data-target="#notify" data-id="{{$coupon->id}}">--}}
+{{--                                {{awtTrans('اعاده تنشيط الكوبون')}}  <i class="feather icon-rotate-cw"></i>--}}
+{{--                            </span>--}}
+{{--                        @endif--}}
+{{--                    </td>--}}
                     <td class="product-action">
                         <span class="text-primary"><a href="{{route('admin.coupons.show' , ['id' => $coupon->id])}}"><i class="feather icon-eye"></i></a></span>
                         <span class="action-edit text-primary"><a href="{{route('admin.coupons.edit' , ['id' => $coupon->id])}}"><i class="feather icon-edit"></i></a></span>
