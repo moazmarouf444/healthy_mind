@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Doctor\Auth\AuthController;
+use App\Http\Controllers\Api\Doctor\DoctorController;
 use App\Http\Controllers\Api\SettlementController;
 use Illuminate\Support\Facades\Route;
 

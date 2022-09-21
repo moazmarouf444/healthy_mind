@@ -46,6 +46,8 @@ return [
     'coupon_has_reached_the_maximum_usage_limit'  => 'Coupon has reached the maximum usage limit',
     'reservation_successfully'  => 'Reservation successfully  ',
     'coupon_not_available'  => 'Coupon not available  ',
+    'the_prescription_has_been_successfully_added'  => 'The prescription has been successfully added',
+
 
 
 

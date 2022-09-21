@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\Doctor\DoctorController;
 use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\SettlementController;
@@ -60,6 +61,7 @@ Route::group([
         Route::get('all-doctors', [UserController::class, 'allDoctors']);
         Route::get('all-specialists', [UserController::class, 'allSpecialists']);
         Route::get('doctor-dates', [UserController::class, 'split_time']);
+        Route::get('doctor-dates-not-reservation', [UserController::class, 'time_split']);
         Route::get('create-contact/{room_id?}', [ContactController::class, 'createContact']);
 
         Route::get('depression', [TestController::class, 'depression']);
@@ -71,6 +73,7 @@ Route::group([
         Route::get('social-phobia', [TestController::class, 'socialPhobia']);
         Route::post('social-phobia-result', [TestController::class, 'socialPhobiaQuestion']);
         Route::post('make-reservation', [ReservationController::class, 'makeReservation']);
+        Route::post('prescription', [DoctorController::class, 'prescription']);
 
     });
     /***************************** AuthController end *****************************/

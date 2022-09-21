@@ -34,18 +34,18 @@ class ReservationController extends Controller
             $discount_percentage = $request->price  *  ($coupon->discount/100 );
            $paid_price =  $request->price - $discount_percentage;
                $reservation = Reservation::create($request->validated()
-                   + ['discount_percentage_price' => $discount_percentage,   'paid_price' => $paid_price,'coupon_id' => $coupon->id]
+                   + ['discount_percentage_price' => $discount_percentage,'is_paid' => 1,   'paid_price' => $paid_price,'coupon_id' => $coupon->id]
                );
            }elseif($coupon->type == 'number'){
                $total_price = $request->price - $coupon->discount;
                $discount_percentage = $request->price  *  ($coupon->discount/100 );
                $reservation = Reservation::create($request->validated()
-                   + ['paid_price' => $total_price,'discount_percentage_price' => $discount_percentage,'coupon_id' => $coupon->id]
+                   + ['paid_price' => $total_price,'discount_percentage_price' => $discount_percentage,'is_paid' => 1,'coupon_id' => $coupon->id]
                );
            }
         }
         else{
-            $reservation = Reservation::create($request->validated() + ['paid_price' => $request->price]);
+            $reservation = Reservation::create($request->validated() + ['paid_price' => $request->price,'is_paid' => 1]);
         }
         return $this->response('success', __('dashboard.reservation_successfully'));
 

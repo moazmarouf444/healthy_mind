@@ -223,4 +223,9 @@ class User extends Authenticatable
         });
     }
 
+    public function prescription(){
+        return $this->hasMany(Prescription::class);
+    }
+
+
 }

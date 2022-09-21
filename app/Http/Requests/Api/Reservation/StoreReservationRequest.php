@@ -17,8 +17,6 @@ class StoreReservationRequest extends BaseApiRequest
             'end_time' => 'required',
             'reservation_type' => 'required|in:presence,remote',
             'price' => 'required|numeric',
-            'status' => 'required|in:pending,inprogress,refused,finished',
-            'is_paid' => 'required|in:0,1',
         ];
     }
 }

@@ -674,8 +674,74 @@ Route::group([
             'title' => 'حذف مجموعه من مقالات'
         ]);
     /*------------ end Of articles ----------*/
-    
-    /*------------ start Of abouts ----------*/
+      /*------------ start Of coupons ----------*/
+      Route::get('coupons', [
+          'uses' => 'CouponController@index',
+          'as' => 'coupons.index',
+          'title' => 'كوبونات الخصم',
+          'icon' => '<i class="fa fa-gift"></i>',
+          'type' => 'parent',
+          'sub_route' => false,
+          'child' => ['coupons.show', 'coupons.create', 'coupons.store', 'coupons.edit', 'coupons.update', 'coupons.delete', 'coupons.deleteAll', 'coupons.renew'],
+      ]);
+
+      Route::get('coupons/{id}/show', [
+          'uses' => 'CouponController@show',
+          'as' => 'coupons.show',
+          'title' => 'عرض  كوبون خصم',
+      ]);
+
+      # coupons store
+      Route::get('coupons/create', [
+          'uses' => 'CouponController@create',
+          'as' => 'coupons.create',
+          'title' => ' صفحة اضافة كوبون خصم',
+      ]);
+
+      # coupons store
+      Route::post('coupons/store', [
+          'uses' => 'CouponController@store',
+          'as' => 'coupons.store',
+          'title' => ' اضافة كوبون خصم',
+      ]);
+
+      # coupons update
+      Route::get('coupons/{id}/edit', [
+          'uses' => 'CouponController@edit',
+          'as' => 'coupons.edit',
+          'title' => 'صفحه تحديث كوبون خصم',
+      ]);
+
+      # coupons update
+      Route::put('coupons/{id}', [
+          'uses' => 'CouponController@update',
+          'as' => 'coupons.update',
+          'title' => 'تحديث كوبون خصم',
+      ]);
+
+      # renew coupon
+      Route::post('coupons/renew', [
+          'uses' => 'CouponController@renew',
+          'as' => 'coupons.renew',
+          'title' => 'تحديث حالة كوبون خصم',
+      ]);
+
+      # coupons delete
+      Route::delete('coupons/{id}', [
+          'uses' => 'CouponController@destroy',
+          'as' => 'coupons.delete',
+          'title' => 'حذف كوبون خصم',
+      ]);
+      #delete all coupons
+      Route::post('delete-all-coupons', [
+          'uses' => 'CouponController@destroyAll',
+          'as' => 'coupons.deleteAll',
+          'title' => 'حذف مجموعه من كوبونات الخصم',
+      ]);
+      /*------------ end Of coupons ----------*/
+
+
+      /*------------ start Of abouts ----------*/
         Route::get('abouts', [
             'uses'      => 'AboutController@index',
             'as'        => 'abouts.index',
@@ -985,71 +1051,6 @@ Route::group([
             'title' => 'حذف مجموعه من اسئله واجابات مقياس توكيد الذات'
         ]);
     /*------------ end Of selfassertiontestquestions ----------*/
-      /*------------ start Of coupons ----------*/
-      Route::get('coupons', [
-          'uses' => 'CouponController@index',
-          'as' => 'coupons.index',
-          'title' => 'كوبونات الخصم',
-          'icon' => '<i class="fa fa-gift"></i>',
-          'type' => 'parent',
-          'sub_route' => false,
-          'child' => ['coupons.show', 'coupons.create', 'coupons.store', 'coupons.edit', 'coupons.update', 'coupons.delete', 'coupons.deleteAll', 'coupons.renew'],
-      ]);
-
-      Route::get('coupons/{id}/show', [
-          'uses' => 'CouponController@show',
-          'as' => 'coupons.show',
-          'title' => 'عرض  كوبون خصم',
-      ]);
-
-      # coupons store
-      Route::get('coupons/create', [
-          'uses' => 'CouponController@create',
-          'as' => 'coupons.create',
-          'title' => ' صفحة اضافة كوبون خصم',
-      ]);
-
-      # coupons store
-      Route::post('coupons/store', [
-          'uses' => 'CouponController@store',
-          'as' => 'coupons.store',
-          'title' => ' اضافة كوبون خصم',
-      ]);
-
-      # coupons update
-      Route::get('coupons/{id}/edit', [
-          'uses' => 'CouponController@edit',
-          'as' => 'coupons.edit',
-          'title' => 'صفحه تحديث كوبون خصم',
-      ]);
-
-      # coupons update
-      Route::put('coupons/{id}', [
-          'uses' => 'CouponController@update',
-          'as' => 'coupons.update',
-          'title' => 'تحديث كوبون خصم',
-      ]);
-
-      # renew coupon
-      Route::post('coupons/renew', [
-          'uses' => 'CouponController@renew',
-          'as' => 'coupons.renew',
-          'title' => 'تحديث حالة كوبون خصم',
-      ]);
-
-      # coupons delete
-      Route::delete('coupons/{id}', [
-          'uses' => 'CouponController@destroy',
-          'as' => 'coupons.delete',
-          'title' => 'حذف كوبون خصم',
-      ]);
-      #delete all coupons
-      Route::post('delete-all-coupons', [
-          'uses' => 'CouponController@destroyAll',
-          'as' => 'coupons.deleteAll',
-          'title' => 'حذف مجموعه من كوبونات الخصم',
-      ]);
-      /*------------ end Of coupons ----------*/
 
 
       /*------------ start Of taylorforanxietytests ----------*/
@@ -1457,7 +1458,41 @@ Route::group([
             'title' => 'حذف مجموعه من كوبونات الخصم'
         ]);
     /*------------ end Of coupons ----------*/
+    
+    /*------------ start Of prescriptions ----------*/
+        Route::get('prescriptions', [
+            'uses'      => 'PrescriptionController@index',
+            'as'        => 'prescriptions.index',
+            'title'     => 'الوصفات الطبيه',
+            'icon'      => '<i class="feather icon-image"></i>',
+            'type'      => 'parent',
+            'sub_route' => false,
+            'child'     => [ 'prescriptions.show', 'prescriptions.delete'  ,'prescriptions.deleteAll' ,]
+        ]);
+
+
+        # prescriptions show
+        Route::get('prescriptions/{id}/Show', [
+            'uses'  => 'PrescriptionController@show',
+            'as'    => 'prescriptions.show',
+            'title' => 'صفحه عرض  الوصفه الطبيه  '
+        ]);
+
+        # prescriptions delete
+        Route::delete('prescriptions/{id}', [
+            'uses'  => 'PrescriptionController@destroy',
+            'as'    => 'prescriptions.delete',
+            'title' => 'حذف الوصفه الطبيه'
+        ]);
+        #delete all prescriptions
+        Route::post('delete-all-prescriptions', [
+            'uses'  => 'PrescriptionController@destroyAll',
+            'as'    => 'prescriptions.deleteAll',
+            'title' => 'حذف مجموعه من الوصفات الطبيه'
+        ]);
+    /*------------ end Of prescriptions ----------*/
     #new_routes_here
+                     
                      
                      
                      

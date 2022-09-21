@@ -10,6 +10,7 @@ use App\Http\Resources\Api\Sections\DoctorResource;
 use App\Models\Date;
 use App\Models\Doctor;
 use App\Models\Rate;
+use App\Models\Reservation;
 use App\Traits\GeneralTrait;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
@@ -47,7 +48,6 @@ class UserController extends Controller
         $val = Date::where('doctor_id',request()->doctor_id)->where($day_name,'enable')->select('id','doctor_id', $day_name.'_from', $day_name.'_to')->first();
 //        dd($val);
         $doctor = Doctor::findOrFail($val['doctor_id']);
-
         if($val){
             $data = array_values($val->toArray());
             $starttime = $data[2];  // your start time
@@ -72,15 +72,16 @@ class UserController extends Controller
     }
     public function time_split(){
         $arr_of_time= $this->split_time();
-        $time = Cart::where('status','pending')->where('center_id', request()->center_id)->where('selected_date_from','<=',request()->day_name)->where('selected_date_to','>=',request()->day_name)->select('center_id','selected_hour')->get()->toArray();
+        $time = Reservation::where('status','pending')->get()->toArray();
         $selected_hour=[];
         foreach ($time as $key => $value) {
             array_push($selected_hour ,$value['selected_hour']);
         }
         $time_occoped = array_diff($this->split_time(), $selected_hour);
-        return successResponseJson(["data"=>array_values($time_occoped)]);
-    }
+        return $this->successData(['data'  =>array_values($time_occoped)]);
 
+//        return successResponseJson(["data"=>array_values($time_occoped)]);
+    }
 
     public function doctorDates(DoctorDatesRequest $request){
             $doctor = Doctor::findOrFail($request->doctor_id);
