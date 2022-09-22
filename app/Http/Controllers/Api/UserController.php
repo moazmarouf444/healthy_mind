@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\DoctorDatesRequest;
+use App\Http\Requests\Api\User\Prescription;
 use App\Http\Requests\Api\User\RateRequest;
 use App\Http\Requests\Api\User\SearchRequest;
+use App\Http\Resources\Api\PrescriptionResource;
 use App\Http\Resources\Api\Sections\DoctorResource;
 use App\Models\Date;
 use App\Models\Doctor;
 use App\Models\Rate;
 use App\Models\Reservation;
+use App\Models\User;
 use App\Traits\GeneralTrait;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
@@ -86,6 +89,14 @@ class UserController extends Controller
     public function doctorDates(DoctorDatesRequest $request){
             $doctor = Doctor::findOrFail($request->doctor_id);
             dd($doctor->dates);
+    }
+
+    public function prescription(){
+        $user = auth()->user();
+        $prescription =  $user->prescription;
+        $prescription  = PrescriptionResource::collection($prescription);
+        return $this->successData(['prescription' => $prescription]);
+
     }
 
 }

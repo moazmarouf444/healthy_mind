@@ -74,6 +74,7 @@ Route::group([
         Route::post('social-phobia-result', [TestController::class, 'socialPhobiaQuestion']);
         Route::post('make-reservation', [ReservationController::class, 'makeReservation']);
         Route::post('prescription', [DoctorController::class, 'prescription']);
+        Route::get('user-prescription', [UserController::class, 'prescription']);
 
     });
     /***************************** AuthController end *****************************/

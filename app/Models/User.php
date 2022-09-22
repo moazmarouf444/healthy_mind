@@ -224,7 +224,7 @@ class User extends Authenticatable
     }
 
     public function prescription(){
-        return $this->hasMany(Prescription::class);
+        return $this->hasMany(Prescription::class,'user_id','id');
     }
 
 
