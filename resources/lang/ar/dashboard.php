@@ -58,6 +58,7 @@ return [
     'coupon_has_reached_the_maximum_usage_limit'  => 'تم وصول الكوبون للحد الاقصي من الاستخدام ',
     'reservation_successfully'  => 'تم  الحجز بنجاح  ',
     'the_prescription_has_been_successfully_added'  => 'تم اضافه الوصفه الطبيه بنجاح   ',
+    'coupon_limit'  => 'تم وصول الكوبون للحد الاقصي من الاستخدام',
 
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',

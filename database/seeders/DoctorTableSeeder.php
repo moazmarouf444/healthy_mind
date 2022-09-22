@@ -27,6 +27,7 @@ class DoctorTableSeeder extends Seeder
             'address'   => 'طريق الملك فيصل ',
             'password' => 123456,
             'specialization' => 'doctor',
+            'session_price' => 1000,
 
         ]);
 

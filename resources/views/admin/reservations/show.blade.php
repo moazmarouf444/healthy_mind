@@ -140,7 +140,7 @@
                                             <label for="first-name-column">{{awtTrans('السعر قبل الخصم')}}</label>
                                             <div class="controls">
                                                 <input type="text"
-                                                       value="{{$reservation->price}}"
+                                                       value="{{$reservation->doctor->session_price}}"
                                                        name="" class="form-control"></input>
                                             </div>
                                         </div>
