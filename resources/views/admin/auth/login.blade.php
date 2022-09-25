@@ -112,11 +112,11 @@
 </div>
 <!-- END: Content-->
 
-    <script src="{{asset('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/core/app-menu.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/core/app.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/scripts/components.js')}}"></script>
-    <script src="{{asset('admin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
+    <script src="{{url('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
+    <script src="{{url('admin/app-assets/js/core/app-menu.js')}}"></script>
+    <script src="{{url('admin/app-assets/js/core/app.js')}}"></script>
+    <script src="{{url('admin/app-assets/js/scripts/components.js')}}"></script>
+    <script src="{{url('admin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
     <script>
         toastr.options = {

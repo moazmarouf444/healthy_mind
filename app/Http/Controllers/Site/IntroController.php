@@ -19,16 +19,8 @@ class IntroController extends Controller
 {
     public function index()
     {
-        view()->share([
-            'services'        => IntroService::get() ,
-            'sliders'         => IntroSlider::get() ,
-            'fqsCategories'   => IntroFqsCategory::get() ,
-            'parteners'       => IntroPartener::get() ,
-            'howWorks'        => IntroHowWork::get() ,
-            'socials'         => IntroSocial::get() ,
-            'settings'        => SettingService::appInformations(SiteSetting::pluck('value', 'key')) ,
-        ]);
-        return view('intro_site.index');
+
+        return view('site.index');
     }
 
 

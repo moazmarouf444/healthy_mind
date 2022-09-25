@@ -15,11 +15,11 @@
             </span>
         </p>
     </footer>
-    <script src="{{asset('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/core/app-menu.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/core/app.js')}}"></script>
-    <script src="{{asset('admin/app-assets/js/scripts/components.js')}}"></script>
-    <script src="{{asset('admin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
+    <script src="{{url('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
+    <script src="{{url('admin/app-assets/js/core/app-menu.js')}}"></script>
+    <script src="{{url('admin/app-assets/js/core/app.js')}}"></script>
+    <script src="{{url('/app-assets/js/scripts/components.js')}}"></script>
+    <script src="{{url('adminadmin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     @yield('js')
     <x-admin.alert />
