@@ -59,6 +59,8 @@ return [
     'reservation_successfully'  => 'تم  الحجز بنجاح  ',
     'the_prescription_has_been_successfully_added'  => 'تم اضافه الوصفه الطبيه بنجاح   ',
     'coupon_limit'  => 'تم وصول الكوبون للحد الاقصي من الاستخدام',
+    'cancellation_customer'  => 'مطلوب الغاء الحجز  من قبل العميل  ',
+    'confirm_cancellation'  => 'تاكيد الالغاء',
 
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',

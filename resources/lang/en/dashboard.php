@@ -48,4 +48,8 @@ return [
     'coupon_not_available'  => 'Coupon not available  ',
     'the_prescription_has_been_successfully_added'  => 'The prescription has been successfully added',
     'coupon_limit'  => 'Coupon has reached the maximum usage limit',
+    'cancellation_customer'  => 'Cancellation of the reservation by the customer is required',
+    'confirm_cancellation'  => ' Confirm cancellation  ',
+
+
 ];

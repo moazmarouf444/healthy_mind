@@ -47,6 +47,7 @@ return [
    'rs'                 => 'Saudi Riyals',
     'unacceptable'        => 'Wait for management approval',
     'this_doctor_successfully_rated'        => 'this doctor successfully rated',
-
-
+    'no_reservations'        => 'No reservations ',
+    'your_reservation_has_been_successfully_updated'        => 'Your reservation has been successfully updated  ',
+    'cancel_the_reservation'        => 'A request to cancel the reservation has been sent, wait for approval from the administration',
 ];

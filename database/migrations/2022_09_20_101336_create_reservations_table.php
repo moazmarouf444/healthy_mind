@@ -25,7 +25,7 @@ return new class extends Migration
             $table->double('price', 9, 2)->default(0);
             $table->double('discount_percentage_price', 9, 2)->default(0);
             $table->double('paid_price', 9, 2)->default(0);
-            $table->enum('status',['inprogress','refused','finished'])->default('inprogress'); //! model const
+            $table->enum('status',['inprogress','refused','finished','cancel_user'])->default('inprogress'); //! model const
             $table->boolean('is_paid')->default(0);
             $table->timestamps();
         });

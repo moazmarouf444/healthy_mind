@@ -143,6 +143,7 @@ return [
     'national_id_image'        => 'صوره اثبات الهويه',
     'logo_image'            => 'صوره الشعار ',
     'lighted_image'        => 'صوره الامضاء',
+    'reservation_id'        => 'الحجز ',
 
     'country'                  => 'الدولة',
     'address'                  => 'العنوان',

@@ -1286,36 +1286,8 @@ Route::group([
             'icon'      => '<i class="feather icon-image"></i>',
             'type'      => 'parent',
             'sub_route' => false,
-            'child'     => ['reservations.show', 'reservations.delete'  ,'reservations.deleteAll' ]
+            'child'     => ['reservations.show', 'reservations.delete'  ,'reservations.deleteAll','reservation.confirm.cancellation' ]
         ]);
-//        # reservations store
-//        Route::get('reservations/create', [
-//            'uses'  => 'ReservationController@create',
-//            'as'    => 'reservations.create',
-//            'title' => ' صفحة اضافة الخحز'
-//        ]);
-        
-
-//        # reservations store
-//        Route::post('reservations/store', [
-//            'uses'  => 'ReservationController@store',
-//            'as'    => 'reservations.store',
-//            'title' => ' اضافة الخحز'
-//        ]);
-
-//        # reservations update
-//        Route::get('reservations/{id}/edit', [
-//            'uses'  => 'ReservationController@edit',
-//            'as'    => 'reservations.edit',
-//            'title' => 'صفحه تحديث الخحز'
-//        ]);
-//
-//        # reservations update
-//        Route::put('reservations/{id}', [
-//            'uses'  => 'ReservationController@update',
-//            'as'    => 'reservations.update',
-//            'title' => 'تحديث الخحز'
-//        ]);
 
         # reservations show
         Route::get('reservations/{id}/Show', [
@@ -1355,12 +1327,25 @@ Route::group([
           'title' => 'الحجوزات المكتمله'
       ]);
       # reservations refused
+      Route::get('reservations-cancel-user', [
+          'uses'  => 'ReservationController@CancelUser',
+          'as'    => 'reservation.cancel.user',
+          'icon'      => '<i class="feather icon-image"></i>',
+          'type'      => 'parent',
+          'title' => 'طلبات الغاء الحجز'
+      ]);
+      # reservations refused
       Route::get('reservations.refused', [
           'uses'  => 'ReservationController@reservationRefused',
           'as'    => 'reservations.refused',
           'icon'      => '<i class="feather icon-image"></i>',
           'type'      => 'parent',
           'title' => 'الحجوزات الملغيه'
+      ]);
+      Route::post('reservation-confirm-cancellation', [
+          'uses'  => 'ReservationController@confirmCancellation',
+          'as'    => 'reservation.confirm.cancellation',
+          'title' => 'تاكيد الغاء الحجوزات'
       ]);
 
       /*------------ end Of reservations ----------*/

@@ -10,31 +10,31 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>{{__('site.login')}}</title>
-    <link rel="apple-touch-icon" href="{{asset('storage/images/settings/fav_icon.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/images/settings/fav_icon.png')}}">
+    <link rel="apple-touch-icon" href="{{url('storage/images/settings/fav_icon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('storage/images/settings/fav_icon.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/vendors-rtl.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/themes/semi-dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/pages/authentication.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/custom-rtl.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/style-rtl.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/extensions/toastr.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css-rtl/plugins/extensions/toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/vendors/css/vendors-rtl.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/themes/semi-dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/pages/authentication.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/custom-rtl.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/assets/css/style-rtl.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/vendors/css/extensions/toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('admin/app-assets/css-rtl/plugins/extensions/toastr.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <style>
-     .app-content{
-        background-image:  url("{{asset('storage/images/settings/login_background.png')}}") ;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-     }   
+        .app-content{
+            background-image:  url("{{url('storage/images/settings/login_background.png')}}") ;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
     </style>
 </head>
 <!-- END: Head-->
@@ -63,8 +63,8 @@
                                     <div class="card-content mb-4">
                                         <div class="card-body pt-1">
                                             <form class="form-horizontal"  action="{{route('admin.login')}}" method="post">
-                                                @csrf
-                                                <!-- <input type="hidden" name="device_id" id="device_id" /> -->
+                                            @csrf
+                                            <!-- <input type="hidden" name="device_id" id="device_id" /> -->
                                                 <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input type="email" class="form-control"  placeholder="{{__('site.email')}}" name="email" required>
                                                     <div class="form-control-position">
@@ -99,7 +99,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -112,66 +112,66 @@
 </div>
 <!-- END: Content-->
 
-    <script src="{{url('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
-    <script src="{{url('admin/app-assets/js/core/app-menu.js')}}"></script>
-    <script src="{{url('admin/app-assets/js/core/app.js')}}"></script>
-    <script src="{{url('admin/app-assets/js/scripts/components.js')}}"></script>
-    <script src="{{url('admin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
-    <script>
-        toastr.options = {
-            "closeButton": true,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "showMethod": "slideDown",
-             "hideMethod": "slideUp",
-              timeOut: 2000 
-        };
-        $(document).ready(function(){
-            $(document).on('submit','.form-horizontal',function(e){
-                e.preventDefault();
-                var url = $(this).attr('action')
-                $.ajax({
-                    url: url,
-                    method: 'post',
-                    data: new FormData($(this)[0]),
-                    dataType:'json',
-                    processData: false,
-                    contentType: false,
-                    beforeSend: function(){
-                        $(".submit_button").html('<i class="fas fa-spinner"></i>').attr('disables',true);
-                    },
-                    success: function(response){
-                        $(".text-danger").remove()
-                        $('.form-horizontal input').removeClass('border-danger')
-                        if (response.status == 'login'){
-                            toastr.success(response.message)
-                            setTimeout(function(){
-                                window.location.replace(response.url)
-                            }, 1000);
-                        }else{
-                            $(".submit_button").html(`<i class="ft-unlock"></i> {{awtTrans('تسجيل دخول')}}`).attr('disable',false)
-                            $('.form-horizontal input[name=password]').addClass('border-danger')
-                            $('.form-horizontal input[name=password').after(`<span class="mt-5 text-danger">${response.message}</span>`);
-                        }
-                    },
-                    error: function (xhr) {
-                        $(".submit_button").html("{{awtTrans('تسجيل دخول')}}").attr('disable',false)
-                        $(".text-danger").remove()
-                        $('.form-horizontal input').removeClass('border-danger')
+<script src="{{url('admin/app-assets/vendors/js/vendors.min.js')}}"></script>
+<script src="{{url('admin/app-assets/js/core/app-menu.js')}}"></script>
+<script src="{{url('admin/app-assets/js/core/app.js')}}"></script>
+<script src="{{url('admin/app-assets/js/scripts/components.js')}}"></script>
+<script src="{{url('admin/app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp",
+        timeOut: 2000
+    };
+    $(document).ready(function(){
+        $(document).on('submit','.form-horizontal',function(e){
+            e.preventDefault();
+            var url = $(this).attr('action')
+            $.ajax({
+                url: url,
+                method: 'post',
+                data: new FormData($(this)[0]),
+                dataType:'json',
+                processData: false,
+                contentType: false,
+                beforeSend: function(){
+                    $(".submit_button").html('<i class="fas fa-spinner"></i>').attr('disables',true);
+                },
+                success: function(response){
+                    $(".text-danger").remove()
+                    $('.form-horizontal input').removeClass('border-danger')
+                    if (response.status == 'login'){
+                        toastr.success(response.message)
+                        setTimeout(function(){
+                            window.location.replace(response.url)
+                        }, 1000);
+                    }else{
+                        $(".submit_button").html(`<i class="ft-unlock"></i> {{awtTrans('تسجيل دخول')}}`).attr('disable',false)
+                        $('.form-horizontal input[name=password]').addClass('border-danger')
+                        $('.form-horizontal input[name=password').after(`<span class="mt-5 text-danger">${response.message}</span>`);
+                    }
+                },
+                error: function (xhr) {
+                    $(".submit_button").html("{{awtTrans('تسجيل دخول')}}").attr('disable',false)
+                    $(".text-danger").remove()
+                    $('.form-horizontal input').removeClass('border-danger')
 
-                        $.each(xhr.responseJSON.errors, function(key,value) {
-                            $('.form-horizontal input[name='+key+']').addClass('border-danger')
-                            $('.form-horizontal input[name='+key+']').after(`<span class="mt-5 text-danger">${value}</span>`);
-                        });
-                    },
-                });
-
+                    $.each(xhr.responseJSON.errors, function(key,value) {
+                        $('.form-horizontal input[name='+key+']').addClass('border-danger')
+                        $('.form-horizontal input[name='+key+']').after(`<span class="mt-5 text-danger">${value}</span>`);
+                    });
+                },
             });
+
         });
-    </script>
-    <!-- @include('components.firebase') -->
+    });
+</script>
+<!-- @include('components.firebase') -->
 </body>
 <!-- END: Body-->
 

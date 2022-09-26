@@ -49,6 +49,15 @@ class ReservationController extends Controller
         return view('admin.reservations.refused_index');
 
     }
+    public function CancelUser(){
+        if (request()->ajax()) {
+            $reservations = Reservation::search(request()->searchArray)->where('status','cancel_user')->paginate(30);
+            $html = view('admin.reservations.table' ,compact('reservations'))->render() ;
+            return response()->json(['html' => $html]);
+        }
+        return view('admin.reservations.cancel_user');
+
+    }
 
 
     public function create()
@@ -103,5 +112,10 @@ class ReservationController extends Controller
         }
     }
 
+    public function confirmCancellation(Request $request){
+        $reservation = Reservation::findOrFail($request->reservation_id);
+        $reservation->update(['status' => 'refused']);
+        return redirect()->back()->with(['success' => awtTrans('تم الغاء الحجز بنجاح ')]);
+    }
 
 }

@@ -172,7 +172,7 @@ return [
         'thursday'                         => 'thursday',
         'friday'                         => 'friday',
         'enable'                         => 'enable',
-
+        'reservation_id'        => 'reservation',
     ],
 
 ];

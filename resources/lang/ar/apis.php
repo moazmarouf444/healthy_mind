@@ -49,4 +49,7 @@ return [
   'rs'        => 'ريال سعودي',
   'unacceptable'        => 'انتظر موافقه الاداره',
   'this_doctor_successfully_rated'        => 'تم تقييم هذا الطبيب بنجاح',
+  'no_reservations'        => 'لا يوجد حجوزات ',
+  'your_reservation_has_been_successfully_updated'        => 'تم تحديث الحجز بنجاح  ',
+  'cancel_the_reservation'        => 'تم ارسال طلب الغاء الحجز انتظر موافقه الاداره',
 ];

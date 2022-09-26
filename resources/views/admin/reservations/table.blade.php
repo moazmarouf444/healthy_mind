@@ -1,49 +1,73 @@
 <div class="position-relative">
     {{-- table loader  --}}
-    <div class="table_loader" >
+    <div class="table_loader">
         {{awtTrans('جاري التحميل')}}
     </div>
     {{-- table loader  --}}
-    
+
     {{-- table content --}}
     <table class="table " id="tab">
         <thead>
-            <tr>
-                <th>
-                    <label class="container-checkbox">
-                        <input type="checkbox" value="value1" name="name1" id="checkedAll">
-                        <span class="checkmark"></span>
-                    </label>
-                </th>
-                <th>{{awtTrans('اسم المريض')}}</th>
-                <th>{{awtTrans('اسم الدكتور')}}</th>
-                <th>{{awtTrans('التاريخ')}}</th>
-                <th>{{awtTrans('من')}}</th>
-                <th>{{awtTrans('الي')}}</th>
-                <th>{{awtTrans('التحكم')}}</th>
-            </tr>
+        <tr>
+            <th>
+                <label class="container-checkbox">
+                    <input type="checkbox" value="value1" name="name1" id="checkedAll">
+                    <span class="checkmark"></span>
+                </label>
+            </th>
+            <th>{{awtTrans('اسم المريض')}}</th>
+            <th>{{awtTrans('اسم الدكتور')}}</th>
+            <th>{{awtTrans('التاريخ')}}</th>
+            <th>{{awtTrans('من')}}</th>
+            <th>{{awtTrans('الي')}}</th>
+            <th>{{awtTrans('الحاله')}}</th>
+            <th>{{awtTrans('التحكم')}}</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach ($reservations as $reservation)
-                <tr class="delete_row">
-                    <td class="text-center">
-                        <label class="container-checkbox">
+        @foreach ($reservations as $reservation)
+            <tr class="delete_row">
+                <td class="text-center">
+                    <label class="container-checkbox">
                         <input type="checkbox" class="checkSingle" id="{{ $reservation->id }}">
                         <span class="checkmark"></span>
-                        </label>
-                    </td>
-                    <td>{{ $reservation->user->name }}</td>
-                    <td>{{ $reservation->doctor->name }}</td>
-                    <td>{{ $reservation->date }}</td>
-                    <td>{{ $reservation->start_time }}</td>
-                    <td>{{ $reservation->end_time }}</td>
-                    <td class="product-action">
-                        <span class="text-primary"><a href="{{ route('admin.reservations.show', ['id' => $reservation->id]) }}"><i class="feather icon-eye"></i></a></span>
-{{--                        <span class="action-edit text-primary"><a href="{{ route('admin.reservations.edit', ['id' => $reservation->id]) }}"><i class="feather icon-edit"></i></a></span>--}}
-                        <span class="delete-row text-danger" data-url="{{ url('admin/reservations/' . $reservation->id) }}"><i class="feather icon-trash"></i></span>
-                    </td>
-                </tr>
-            @endforeach
+                    </label>
+                </td>
+                <td>{{ $reservation->user->name }}</td>
+                <td>{{ $reservation->doctor->name }}</td>
+                <td>{{ $reservation->date }}</td>
+                <td>{{ $reservation->start_time }}</td>
+                <td>{{ $reservation->end_time }}</td>
+                <td>
+                    @if($reservation->status == 'inprogress')
+                        {{__('dashboard.inprogress')}}
+                    @elseif($reservation->status == 'refused')
+                        {{__('dashboard.refused')}}
+                    @elseif($reservation->status == 'finished')
+                        {{__('dashboard.finished')}}
+                    @elseif($reservation->status == 'cancel_user')
+                        <form method="POST" action="{{route('admin.reservation.confirm.cancellation')}}"
+                              class="store form-horizontal" novalidate>
+                        <input hidden value="{{$reservation->id}}" name="reservation_id"></input>
+                            @csrf
+                            <div class="col-md-4 col-sm-6 col-12 fonticon-container">
+                                <button type="submit" class="btn btn-danger mr-1 mb-1 submit_button">
+                                    {{__('dashboard.confirm_cancellation')}}
+                                </button>
+                            </div>
+                        </form>
+                    @endif
+                </td>
+                <td class="product-action">
+                    <span class="text-primary"><a
+                                href="{{ route('admin.reservations.show', ['id' => $reservation->id]) }}"><i
+                                    class="feather icon-eye"></i></a></span>
+                    {{--                        <span class="action-edit text-primary"><a href="{{ route('admin.reservations.edit', ['id' => $reservation->id]) }}"><i class="feather icon-edit"></i></a></span>--}}
+                    <span class="delete-row text-danger" data-url="{{ url('admin/reservations/' . $reservation->id) }}"><i
+                                class="feather icon-trash"></i></span>
+                </td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
     {{-- table content --}}
@@ -64,4 +88,3 @@
     </div>
 @endif
 {{-- pagination  links div --}}
-

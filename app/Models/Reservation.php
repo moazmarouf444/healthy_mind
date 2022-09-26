@@ -8,7 +8,7 @@ class Reservation extends BaseModel
     protected $guarded = [];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function doctor()
     {
@@ -16,7 +16,7 @@ class Reservation extends BaseModel
     }
 
     public function coupon(){
-        return $this->belongsTo(Coupon::class);
+        return $this->belongsTo(Coupon::class,'coupon_id','id');
     }
 
 }

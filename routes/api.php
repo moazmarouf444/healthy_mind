@@ -78,5 +78,11 @@ Route::group([
 
     });
     /***************************** AuthController end *****************************/
+    /***************************** Reservation  Start *****************************/
+    Route::get('my-reservations', [ReservationController::class, 'myReservations']);
+    Route::put('update-reservation', [ReservationController::class, 'updateReservations']);
+    Route::post('delete-reservation', [ReservationController::class, 'deleteReservations']);
+
+    /***************************** AuthController End *****************************/
 
 });

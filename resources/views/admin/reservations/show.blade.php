@@ -158,6 +158,8 @@
                                                        {{__('dashboard.refused')}}
                                                        @elseif($reservation->status == 'finished')
                                                        {{__('dashboard.finished')}}
+                                                       @elseif($reservation->status == 'cancel_user')
+                                                       {{__('dashboard.cancellation_customer')}}
                                                        @endif
                                                                "
                                                        name="" class="form-control"></input>
@@ -167,6 +169,10 @@
 
 
                                 @endif
+                                <div class="col-12 d-flex justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-primary mr-1 mb-1 submit_button">{{awtTrans('عرض')}}</button>
+                                    <a href="{{ url()->previous() }}" type="reset" class="btn btn-outline-warning mr-1 mb-1">{{awtTrans(' رجوع ')}}</a>
+                                </div>
 
                             </div>
                         </form>

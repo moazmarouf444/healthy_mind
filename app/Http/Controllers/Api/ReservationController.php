@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Reservation\DeleteReservationRequest;
 use App\Http\Requests\Api\Reservation\StoreReservationRequest;
+use App\Http\Requests\Api\Reservation\UpdateReservationRequest;
+use App\Http\Resources\Api\Reservations\ReservationResource;
+use App\Models\Admin;
 use App\Models\Coupon;
 use App\Models\Doctor;
 use App\Models\Reservation;
+use App\Notifications\CancelReservation;
 use App\Traits\GeneralTrait;
 use App\Traits\ResponseTrait;
 use App\Traits\SmsTrait;
@@ -47,6 +52,34 @@ class ReservationController extends Controller
             $reservation = Reservation::create($request->validated() + ['paid_price' => $price, 'is_paid' => 1]);
         }
         return $this->response('success', __('dashboard.reservation_successfully'));
-
     }
+
+    public function myReservations()
+    {
+        $user_id = auth('sanctum')->user()->id;
+        $reservations = Reservation::where('user_id', $user_id)->latest()->get();
+        if ($reservations->count() == 0) {
+            return $this->response('success', __('apis.no_reservations'));
+        }
+        $reservations = ReservationResource::collection(Reservation::where('user_id', $user_id)->latest()->get());
+        return $this->successData(['reservations' => $reservations]);
+    }
+
+    public function updateReservations(UpdateReservationRequest $request)
+    {
+        $user_id = auth('sanctum')->user()->id;
+        $reservation = Reservation::where('user_id', $user_id)->where('doctor_id', $request->doctor_id)->where('id', $request->reservation_id)->first();
+        $reservation->update($request->only(['date', 'start_time', 'end_time']));
+        return $this->response('success', __('apis.your_reservation_has_been_successfully_updated'));
+    }
+
+    public function deleteReservations(DeleteReservationRequest $request)
+    {
+        $reservation = Reservation::findOrFail($request->reservation_id);
+        $reservation->update(['status' => 'cancel_user']);
+        $admin = Admin::first();
+        $admin->notify(new CancelReservation($reservation));
+        return $this->response('success', __('apis.cancel_the_reservation'));
+     }
+
 }
