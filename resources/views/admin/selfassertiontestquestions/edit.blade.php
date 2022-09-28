@@ -59,6 +59,7 @@
                                             </div>
                                         @endforeach
 
+
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="first-name-column">{{awtTrans('عدد النقط')}}</label>

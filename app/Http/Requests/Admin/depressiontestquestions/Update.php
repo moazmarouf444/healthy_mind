@@ -25,6 +25,11 @@ class Update extends FormRequest
             'answer_two.en'       => 'required' ,
             'answer_three.ar'       => 'required' ,
             'answer_three.en'       => 'required' ,
+
+            'value_answer_zero'       => 'required' ,
+            'value_answer_one'       => 'required' ,
+            'value_answer_two'       => 'required' ,
+            'value_answer_three'       => 'required' ,
         ];
     }
 }

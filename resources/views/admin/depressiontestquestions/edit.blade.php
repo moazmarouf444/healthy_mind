@@ -43,7 +43,7 @@
                                         @endforeach
 
                                             @foreach (languages() as $lang)
-                                                <div class="col-md-6 col-12">
+                                                <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="first-name-column">{{__('site.answer_one_'.$lang)}}</label>
                                                         <div class="controls">
@@ -57,10 +57,23 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{awtTrans('عدد النقط')}}</label>
+                                                    <div class="controls">
+                                                        <input type="text"
+                                                               value="{{$depressiontestquestion->value_answer_zero}}"
+                                                               name="value_answer_zero" class="form-control"
+                                                               placeholder="{{awtTrans('اكتب عدد النقط')}}"
+                                                               required
+                                                               data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
                                             @foreach (languages() as $lang)
-                                                <div class="col-md-6 col-12">
+                                                <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="first-name-column">{{__('site.answer_two_'.$lang)}}</label>
                                                         <div class="controls">
@@ -74,9 +87,23 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{awtTrans('عدد النقط')}}</label>
+                                                    <div class="controls">
+                                                        <input type="text"
+                                                               value="{{$depressiontestquestion->value_answer_one}}"
+                                                               name="value_answer_one" class="form-control"
+                                                               placeholder="{{awtTrans('اكتب عدد النقط')}}"
+                                                               required
+                                                               data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
                                             @foreach (languages() as $lang)
-                                                <div class="col-md-6 col-12">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="first-name-column">{{__('site.answer_two_'.$lang)}}</label>
                                                         <div class="controls">
@@ -91,8 +118,24 @@
                                                 </div>
                                             @endforeach
 
-                                            @foreach (languages() as $lang)
-                                                <div class="col-md-6 col-12">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{awtTrans('عدد النقط')}}</label>
+                                                    <div class="controls">
+                                                        <input type="text"
+                                                               value="{{$depressiontestquestion->value_answer_two}}"
+                                                               name="value_answer_two" class="form-control"
+                                                               placeholder="{{awtTrans('اكتب عدد النقط')}}"
+                                                               required
+                                                               data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        @foreach (languages() as $lang)
+                                                <div class="col-4">
                                                     <div class="form-group">
                                                         <label for="first-name-column">{{__('site.answer_four_'.$lang)}}</label>
                                                         <div class="controls">
@@ -107,7 +150,22 @@
                                                 </div>
                                             @endforeach
 
-                                        <div class="col-12 d-flex justify-content-center mt-3">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{awtTrans('عدد النقط')}}</label>
+                                                    <div class="controls">
+                                                        <input type="text"
+                                                               value="{{$depressiontestquestion->value_answer_three}}"
+                                                               name="value_answer_three" class="form-control"
+                                                               placeholder="{{awtTrans('اكتب عدد النقط')}}"
+                                                               required
+                                                               data-validation-required-message="{{awtTrans('هذا الحقل مطلوب')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-12 d-flex justify-content-center mt-3">
                                             <button type="submit"
                                                     class="btn btn-primary mr-1 mb-1 submit_button">{{awtTrans('تعديل')}}</button>
                                             <a href="{{ url()->previous() }}" type="reset"

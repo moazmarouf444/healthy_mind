@@ -41,17 +41,20 @@ trait menu {
         'count' => \App\Models\Social::count(),
         'icon'  => 'icon-thumbs-up',
         'url'   => url('admin/socials'),
-      ],  [
-        'name'  => awtTrans('التقارير'),
-        'count' => \App\Models\LogActivity::count(),
-        'icon'  => 'icon-list',
-        'url'   => url('admin/reports'),
-      ], [
-        'name'  => awtTrans('باقات الرسائل'),
-        'count' => \App\Models\SMS::count(),
-        'icon'  => 'icon-list',
-        'url'   => url('admin/sms'),
-      ], [
+      ],
+//        [
+//        'name'  => awtTrans('التقارير'),
+//        'count' => \App\Models\LogActivity::count(),
+//        'icon'  => 'icon-list',
+//        'url'   => url('admin/reports'),
+//      ],
+//        [
+//        'name'  => awtTrans('باقات الرسائل'),
+//        'count' => \App\Models\SMS::count(),
+//        'icon'  => 'icon-list',
+//        'url'   => url('admin/sms'),
+//      ],
+        [
         'name'  => awtTrans('الصلاحيات'),
         'count' => \App\Models\Role::count(),
         'icon'  => 'icon-eye',
