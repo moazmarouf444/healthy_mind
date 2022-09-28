@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('image', 50)->default('default.png');
             $table->string('logo', 50)->default('default.png');
             $table->string('lighted', 50)->default('default.png');
-            $table->boolean('active')->default(0);
+            $table->boolean('active')->default(1);
             $table->boolean('is_blocked')->default(0);
             $table->boolean('is_approved')->default(0);
             $table->string('lang', 2)->default('ar');

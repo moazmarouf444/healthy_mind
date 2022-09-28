@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api\Doctor\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Auth\LoginRequest;
+use App\Http\Requests\Api\Doctor\Auth\LoginRequest;
 use App\Http\Requests\Api\Doctor\Auth\RegisterRequest;
 use App\Http\Requests\Api\Doctor\Auth\UpdatePasswordRequest;
 use App\Http\Requests\Api\Doctor\Auth\UpdateProfileRequest;
+use App\Http\Resources\Api\Notifications\NotificationsCollection;
 use App\Http\Resources\Api\Sections\DoctorResource;
 use App\Models\Admin;
 use App\Models\Doctor;
@@ -45,9 +46,7 @@ class AuthController extends Controller
         if ($doctor->is_blocked) {
             return $this->blockedReturn($doctor);
         }
-        if (!$doctor->active) {
-            return $this->phoneActivationReturn($doctor);
-        }
+
         if (!$doctor->is_approved) {
             return $this->unAcceptableReturn($doctor);
         }
@@ -89,4 +88,29 @@ class AuthController extends Controller
         return $this->successMsg(__('apis.updated'));
     }
 
+    public function switchNotificationStatus() {
+        $user = auth()->user();
+        $user->update(['is_notify' => !$user->is_notify]);
+        return $this->response('success', __('apis.updated'), ['notify' => (bool) $user->refresh()->is_notify]);
+    }
+
+    public function getNotifications() {
+        auth()->user()->unreadNotifications->markAsRead();
+        $notifications = new NotificationsCollection(auth()->user()->notifications()->paginate($this->paginateNum()));
+        return $this->successData(['notifications' => $notifications]);
+    }
+
+    public function countUnreadNotifications() {
+        return $this->successData(['count' => auth()->user()->unreadNotifications->count()]);
+    }
+
+    public function deleteNotification($notification_id) {
+        auth()->user()->notifications()->where('id', $notification_id)->delete();
+        return $this->successMsg( __('site.notify_deleted'));
+    }
+
+    public function deleteNotifications() {
+        auth()->user()->notifications()->delete();
+        return $this->successMsg( __('apis.deleted'));
+    }
 }

@@ -50,6 +50,8 @@ return [
     'coupon_limit'  => 'Coupon has reached the maximum usage limit',
     'cancellation_customer'  => 'Cancellation of the reservation by the customer is required',
     'confirm_cancellation'  => ' Confirm cancellation  ',
+    'is_accepted'  => 'حاله الموافقه',
+
 
 
 ];

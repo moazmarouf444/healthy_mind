@@ -10,8 +10,8 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>@yield('title',isset(\Request::route()->getAction()['title']) ? awtTrans(\Request::route()->getAction()['title']) : '')</title>
-    <link rel="apple-touch-icon" href="{{Cache::get('settings')['fav_icon']}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{Cache::get('settings')['fav_icon']}}">
+    <link rel="apple-touch-icon" href="{{Cache::get('settings')['fav_icon'] ?? ''}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{Cache::get('settings')['fav_icon'] ?? ''}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
+use App\Http\Controllers\Api\Complaint;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\ActivateRequest;
 use App\Http\Requests\Api\Auth\changePhoneSendCodeRequest;
@@ -28,6 +29,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use function __;
+use function auth;
+use function trans;
 
 class AuthController extends Controller {
   use ResponseTrait, SmsTrait, GeneralTrait;

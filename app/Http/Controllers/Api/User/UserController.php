@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\DoctorDatesRequest;
-use App\Http\Requests\Api\User\Prescription;
+use App\Http\Requests\Api\User\PresciptionRequest;
 use App\Http\Requests\Api\User\RateRequest;
 use App\Http\Requests\Api\User\SearchRequest;
 use App\Http\Resources\Api\PrescriptionResource;
@@ -13,11 +13,13 @@ use App\Models\Date;
 use App\Models\Doctor;
 use App\Models\Rate;
 use App\Models\Reservation;
-use App\Models\User;
 use App\Traits\GeneralTrait;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use function __;
+use function auth;
+use function dd;
+use function request;
 
 class UserController extends Controller
 {
@@ -33,7 +35,8 @@ class UserController extends Controller
     }
 
     public function rateDoctor(RateRequest $request){
-          Rate::create($request->validated());
+
+          Rate::create($request->validated() + ['user_id' =>  auth()->user()->id]);
         return $this->response('success', __('apis.this_doctor_successfully_rated'));
     }
 
@@ -91,12 +94,20 @@ class UserController extends Controller
             dd($doctor->dates);
     }
 
-    public function prescription(){
+    public function prescription(PresciptionRequest $request){
+        $prescription = PrescriptionResource::collection(\App\Models\Prescription::where('id',$request->id)->get());
+        return $this->successData(['prescription' => $prescription]);
+
+    }
+    public function allPrescription(){
         $user = auth()->user();
         $prescription =  $user->prescription;
         $prescription  = PrescriptionResource::collection($prescription);
         return $this->successData(['prescription' => $prescription]);
 
     }
+
+
+
 
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Doctor\Auth\AuthController;
 use App\Http\Controllers\Api\Doctor\DoctorController;
+use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\SettlementController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,7 @@ Route::group([
         Route::post('reset-password'                , [AuthController::class, 'resetPassword']);
     });
 
-    Route::group(['middleware' => ['auth:sanctum', 'is-active']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('profile', [AuthController::class, 'getProfile']);
         Route::put('update-profile', [AuthController::class, 'updateProfile']);
         Route::patch('update-passward', [AuthController::class, 'updatePassword']);
@@ -36,9 +37,15 @@ Route::group([
         Route::get('count-notifications', [AuthController::class, 'countUnreadNotifications']);
         Route::delete('delete-notification/{notification_id}', [AuthController::class, 'deleteNotification']);
         Route::delete('delete-notifications', [AuthController::class, 'deleteNotifications']);
+        Route::post('prescription', [DoctorController::class, 'prescription']);
+        Route::get('reservations', [ReservationController::class, 'doctorReservation']);
+        Route::get('rates', [DoctorController::class, 'doctorRates']);
+
+        Route::get('reservation-inprogress', [ReservationController::class, 'doctorReservationInprogress']);
+        Route::get('reservation-finished', [ReservationController::class, 'doctorReservationFinished']);
+        Route::get('reservation-cancel', [ReservationController::class, 'doctorReservationCancel']);
+        Route::put('switch-notify', [AuthController::class, 'switchNotificationStatus']);
+        Route::get('notifications', [AuthController::class, 'getNotifications']);
+        Route::get('count-notifications', [AuthController::class, 'countUnreadNotifications']);
     });
-    /***************************** AuthController end *****************************/
-
-
-
 });

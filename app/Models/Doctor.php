@@ -159,9 +159,6 @@ class Doctor extends Authenticatable
         return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
 
     }
-
-
-
     public function markAsActive()
     {
         $this->update(['code' => null, 'active' => true]);
@@ -234,19 +231,19 @@ class Doctor extends Authenticatable
     {
         parent::boot();
         /* creating, created, updating, updated, deleting, deleted, forceDeleted, restored */
-
         static::deleted(function ($model) {
             $model->deleteFile($model->attributes['image'], 'doctors');
         });
     }
 
-    public function doctors(){
+    public function rate(){
         return $this->hasMany(Rate::class,'doctor_id','id');
     }
 
     public function scopeDoctor($query){
         return $query->where('specialization','doctor');
     }
+
     public function scopeSpecialist($query){
         return $query->where('specialization','specialist');
     }
@@ -254,6 +251,7 @@ class Doctor extends Authenticatable
     public function dates(){
         return $this->hasMany(Date::class);
     }
+
     public function reservation(){
         return $this->hasMany(Reservation::class);
     }
@@ -261,6 +259,4 @@ class Doctor extends Authenticatable
     public function prescription(){
         return $this->hasMany(Prescription::class);
     }
-
-
 }

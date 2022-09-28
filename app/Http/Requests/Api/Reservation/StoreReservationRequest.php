@@ -10,7 +10,6 @@ class StoreReservationRequest extends BaseApiRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
             'doctor_id' => 'required|exists:doctors,id',
             'date'        => 'required|date|after:'.date('Y-m-d'),
             'start_time' => 'required',

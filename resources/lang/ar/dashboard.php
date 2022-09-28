@@ -61,6 +61,8 @@ return [
     'coupon_limit'  => 'تم وصول الكوبون للحد الاقصي من الاستخدام',
     'cancellation_customer'  => 'مطلوب الغاء الحجز  من قبل العميل  ',
     'confirm_cancellation'  => 'تاكيد الالغاء',
+    'is_accepted'  => 'approval status',
+
 
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',
 //    'high_self_esteem' => 'ارتفاع  في التاكيد الذاتي  ',

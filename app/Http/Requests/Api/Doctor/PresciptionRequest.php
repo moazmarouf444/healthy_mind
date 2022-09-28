@@ -11,7 +11,6 @@ class PresciptionRequest extends BaseApiRequest
     {
         return [
             'user_id' => 'required|exists:users,id',
-            'doctor_id' => 'required|exists:doctors,id',
             'date'        => 'required|date',
             'diagnosis'        => 'required',
             'prescription'        => 'required',

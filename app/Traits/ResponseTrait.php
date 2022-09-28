@@ -122,9 +122,7 @@ trait ResponseTrait {
     default:
       $code = 200;
       break;
-
     }
-
     return $code;
   }
 

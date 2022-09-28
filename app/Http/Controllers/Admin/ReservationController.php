@@ -100,7 +100,6 @@ class ReservationController extends Controller
     public function destroyAll(Request $request)
     {
         $requestIds = json_decode($request->data);
-        
         foreach ($requestIds as $id) {
             $ids[] = $id->id;
         }

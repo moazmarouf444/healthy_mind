@@ -24,6 +24,8 @@ class ReservationController extends Controller
     public function makeReservation(StoreReservationRequest $request)
     {
         $doctor = Doctor::find($request->doctor_id);
+        $user_id = auth('sanctum')->user()->id;
+
         $price = $doctor->session_price;
         if ($request->coupon_num) {
             $coupon = Coupon::where('coupon_num', $request->coupon_num)->first();
@@ -39,17 +41,17 @@ class ReservationController extends Controller
                 $discount_percentage = $price * ($coupon->discount / 100);
                 $paid_price = $price - $discount_percentage;
                 $reservation = Reservation::create($request->validated()
-                    + ['discount_percentage_price' => $discount_percentage, 'is_paid' => 1, 'paid_price' => $paid_price, 'coupon_id' => $coupon->id]
+                    + ['user_id' => $user_id, 'discount_percentage_price' => $discount_percentage, 'is_paid' => 1, 'paid_price' => $paid_price, 'coupon_id' => $coupon->id]
                 );
             } elseif ($coupon->type == 'number') {
                 $total_price = $price - $coupon->discount;
                 $discount_percentage = $price * ($coupon->discount / 100);
                 $reservation = Reservation::create($request->validated()
-                    + ['paid_price' => $total_price, 'discount_percentage_price' => $discount_percentage, 'is_paid' => 1, 'coupon_id' => $coupon->id]
+                    + ['user_id' => $user_id, 'paid_price' => $total_price, 'discount_percentage_price' => $discount_percentage, 'is_paid' => 1, 'coupon_id' => $coupon->id]
                 );
             }
         } else {
-            $reservation = Reservation::create($request->validated() + ['paid_price' => $price, 'is_paid' => 1]);
+            $reservation = Reservation::create($request->validated() + ['user_id' => $user_id, 'paid_price' => $price, 'is_paid' => 1]);
         }
         return $this->response('success', __('dashboard.reservation_successfully'));
     }
@@ -69,6 +71,10 @@ class ReservationController extends Controller
     {
         $user_id = auth('sanctum')->user()->id;
         $reservation = Reservation::where('user_id', $user_id)->where('doctor_id', $request->doctor_id)->where('id', $request->reservation_id)->first();
+        if (!$reservation) {
+            return $this->response('success', __('apis.مش '));
+
+        }
         $reservation->update($request->only(['date', 'start_time', 'end_time']));
         return $this->response('success', __('apis.your_reservation_has_been_successfully_updated'));
     }
@@ -80,6 +86,33 @@ class ReservationController extends Controller
         $admin = Admin::first();
         $admin->notify(new CancelReservation($reservation));
         return $this->response('success', __('apis.cancel_the_reservation'));
-     }
+    }
 
+    public function doctorReservation()
+    {
+        $doctor = auth()->user();
+        $reservations = Reservation::where('doctor_id',$doctor->id)->
+        orderBy('date','ASC')->orderBy('start_time','ASC')->where('status','inprogress')->get();
+        return $this->successData(['reservations' => $reservations]);
+    }
+    public function doctorReservationInprogress(){
+        $doctor = auth()->user();
+        $reservations = Reservation::where('doctor_id',$doctor->id)->
+        orderBy('date','ASC')->orderBy('start_time','ASC')->where('status','inprogress')->get();
+        return $this->successData(['reservations' => $reservations]);
+    }
+    public function doctorReservationFinished(){
+        $doctor = auth()->user();
+        $reservations = Reservation::where('doctor_id',$doctor->id)->
+        orderBy('date','ASC')->orderBy('start_time','ASC')->where('status','finished')->get();
+        return $this->successData(['reservations' => $reservations]);
+
+    }
+    public function doctorReservationCancel(){
+        $doctor = auth()->user();
+        $reservations = Reservation::where('doctor_id',$doctor->id)->
+        orderBy('date','ASC')->orderBy('start_time','ASC')->where('status','refused')->get();
+        return $this->successData(['reservations' => $reservations]);
+
+    }
 }
