@@ -50,7 +50,7 @@
                     <div class="card bg-authentication rounded-0 mb-0">
                         <div class="row m-0" style="background: black">
                             <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-                                <img class="w-100" src="{{$data['login_background']}}" alt="branding logo">
+                                <img class="w-100" src="{{$data['logo']}}" alt="branding logo">
                             </div>
                             <div class="col-lg-6 col-12 p-0">
                                 <div class="card rounded-0 mb-0 px-2">
